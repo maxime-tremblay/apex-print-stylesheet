@@ -1,0 +1,71 @@
+/* Hide elements that are only visible when printed */
+.printOnly{
+    display: none;
+}
+
+/* Show elements that are only visible on screen */
+.showOnly{
+    display: block;
+}
+
+@media print{
+    /* Removes header (including top menu), side menu, footer, back to top button and dev toolbar */
+    header,
+    .t-Body-nav,
+    footer,
+    .t-Body .t-Body-main .t-Body-content .t-Body-topButton,
+    #apexDevToolbar {
+        display: none !important;
+    }
+
+    /* Display elements that are only visible when printed */
+    .printOnly{
+        display: block;
+    }
+
+    /* Hide elements that are only visible on screen */
+    .showOnly{
+        display: none;
+    }
+
+    /* Removes the side menu transform that translates the body content to the right */
+    .apex-side-nav.js-navExpanded .t-Body-main {
+        -webkit-transform:translate3d(0,0,0);
+        transform:translate3d(0,0,0);
+    }
+
+    /* Moves the title to the top left corner */
+    .t-Body .t-Body-main .t-Body-title {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+    }
+
+    /* Removes padding/margin from the body */
+    .t-Body .t-Body-main .t-Body-content {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    /* Removes background image from the body */
+    body {
+        background-image: none !important;
+    }
+
+    /* IRR floating header - Prevent floating */
+    .t-IRR-region .js-stickyTableHeader{
+        top: 0px !important;
+        width: inherit !important;
+    }
+
+    /* Prevent IRR rows from breaking/printing on two pages */
+    .t-IRR-region .a-IRR-table tbody tr{
+        page-break-inside: avoid;
+    }
+
+    /* Display the URLs after all hyperlink elements */
+    a:after {
+        content: " [" attr(href) "] ";
+    }
+}
