@@ -10,10 +10,13 @@
 
 @media print{
     /* Removes header (including top menu), side menu, footer, back to top button and dev toolbar */
-    header,
+    .t-Header,
     .t-Body-nav,
     footer,
     .t-Body .t-Body-main .t-Body-content .t-Body-topButton,
+    #t_Body_content_offset,
+    .apex-page-success,
+    .apex-page-error,
     #apexDevToolbar {
         display: none !important;
     }
@@ -24,7 +27,8 @@
     }
 
     /* Hide elements that are only visible on screen */
-    .showOnly{
+    .showOnly,
+    .doNotPrint{
         display: none;
     }
 
@@ -32,13 +36,20 @@
     .apex-side-nav.js-navExpanded .t-Body-main {
         -webkit-transform:translate3d(0,0,0);
         transform:translate3d(0,0,0);
-    }
+    } 
+    
+    /* Remove the space for the header */
+    .t-Body-main {  
+        margin-top: 0 !important  
+    }  
 
     /* Moves the title to the top left corner */
     .t-Body .t-Body-main .t-Body-title {
         position: relative !important;
         left: 0 !important;
+        right: 0 !important;
         top: 0 !important;
+        border-bottom: none !important;
     }
 
     /* Removes padding/margin from the body */
@@ -49,7 +60,8 @@
     }
 
     /* Removes background image from the body */
-    body {
+    body,
+    .t-Body{
         background-image: none !important;
     }
 
@@ -63,9 +75,9 @@
     .t-IRR-region .a-IRR-table tbody tr{
         page-break-inside: avoid;
     }
-
-    /* Display the URLs after all hyperlink elements */
-    a:after {
-        content: " [" attr(href) "] ";
+    /* Reset the min-height of the page content and form */
+    .t-Body-content,
+    form#wwvFlowForm{
+        min-height: 0 !important;
     }
 }
